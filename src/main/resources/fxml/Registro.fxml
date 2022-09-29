@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="604.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.RegistroController">
+  <children>
+      <Label layoutX="75.0" layoutY="36.0" prefHeight="61.0" prefWidth="636.0" text="REGISTRO DE DATOS" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="36.0">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <HBox id="hb1" layoutX="1.0" layoutY="106.0" prefHeight="498.0" prefWidth="1146.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="106.0">
+         <children>
+            <VBox id="vbox1" prefHeight="454.0" prefWidth="378.0">
+               <children>
+                  <Label text="Fecha:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="txtfecha">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Label text="Empresa:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtempresa" prefHeight="25.0" prefWidth="139.0">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Agencia:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtagencia" prefHeight="25.0" prefWidth="139.0">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Ubicación:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtubicacion" prefHeight="25.0" prefWidth="139.0">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Perito:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtperito" prefHeight="25.0" prefWidth="139.0">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="50.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox id="vbox2" prefHeight="454.0" prefWidth="393.0">
+               <children>
+                  <Label text="N° Cotización:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtcotizacion" prefHeight="25.0" prefWidth="179.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="50.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="N° Tasación:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txttasacion" prefHeight="25.0" prefWidth="179.0">
+                     <VBox.margin>
+                        <Insets left="10.0" right="50.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Persona de contacto:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtcontacto">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Cliente:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtcliente">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Label text="Costo:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox prefHeight="31.0" prefWidth="281.0">
+                     <children>
+                        <TextField fx:id="txtcosto" />
+                        <ComboBox fx:id="txttipo" prefHeight="25.0" prefWidth="56.0" promptText="S/">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox id="vbox3" prefHeight="454.0" prefWidth="370.0">
+               <children>
+                  <Label text="Descripción:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextArea fx:id="txtdescripcion" prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </TextArea>
+               </children>
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="btnAdd" layoutX="506.0" layoutY="514.0" mnemonicParsing="false" onAction="#Add" prefHeight="39.0" prefWidth="137.0" style="-fx-background-color: #555555;" text="REGISTRAR" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+   </children>  
+</AnchorPane>
