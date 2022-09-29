@@ -128,8 +128,7 @@ public class BuscarController implements Initializable {
             String[] parts = tipocosto.split(" ");
             tipo = parts[0];
             costo = parts[1];
-            
-        
+                 
             pst = con.prepareStatement("update ainsac.clientes set fecha = ?,nrocotizacion = ?,empresa = ?,nrotasacion = ?,agencia = ?,contacto = ?,ubicacion = ?,cliente = ?,perito = ?,costo = ?,tipo = ?,descripcion = ? where id = ?");
             pst.setObject(1, fecha);                                                              
             pst.setString(2, cotizacion);
