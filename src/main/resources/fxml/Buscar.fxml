@@ -49,7 +49,7 @@
                         <Insets left="20.0" top="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <ComboBox fx:id="cb1" prefHeight="25.0" prefWidth="99.0">
+                  <ComboBox fx:id="cb1" prefHeight="25.0" prefWidth="125.0">
                      <HBox.margin>
                         <Insets left="10.0" top="20.0" />
                      </HBox.margin>
@@ -59,7 +59,7 @@
                         <Insets left="50.0" top="20.0" />
                      </HBox.margin>
                   </TextField>
-                  <ComboBox fx:id="cb2" prefHeight="25.0" prefWidth="99.0">
+                  <ComboBox fx:id="cb2" prefHeight="25.0" prefWidth="125.0">
                      <HBox.margin>
                         <Insets left="10.0" top="20.0" />
                      </HBox.margin>

@@ -19,14 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
          try {
-             
-           /*  TableView<ObservableList<String>> table = new TableView<ObservableList<String>>();
-        // We bind the prefHeight- and prefWidthProperty to the height and width of the stage.
-        table.prefHeightProperty().bind(stage.heightProperty());
-        table.prefWidthProperty().bind(stage.widthProperty());
-        stage.setScene(new Scene(table, 400, 400));*/
-       
-           Parent root = FXMLLoader.load(getClass().getResource("/fxml/Buscar.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("/fxml/Modelo.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
