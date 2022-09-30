@@ -25,7 +25,8 @@ public class App extends Application {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }          
+        }     
+         
     }
     public static void main(String[] args) {
         launch();
