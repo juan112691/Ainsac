@@ -27,12 +27,16 @@ import javafx.scene.control.TextField;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.DefaultStringConverter;
 import javax.swing.JFileChooser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -44,6 +48,7 @@ import org.apache.poi.ss.usermodel.Workbook;
  * @author juan_
  */
 public class BuscarController implements Initializable {
+    static String nombreboton;
     ObservableList<String> tipoList = FXCollections.observableArrayList("Fecha","N° Cotización","Empresa","N° Tasación","Agencia","Contacto","Ubicación","Cliente","Perito","Costo","Descripción");
     @FXML
     private ComboBox cb1;
@@ -98,17 +103,20 @@ public class BuscarController implements Initializable {
     
     private ObservableList<Clientes> Clientes;
     private ObservableList<Clientes> filtroclientes;
+    private ObservableList<String> factura;
     @FXML
     private TextField txtbuscar;
     @FXML
     private TextField txtbuscar1;
+    @FXML
+     private TableColumn<Clientes, String> fact;
     @FXML
     void Update(ActionEvent event) {
         try
         {
        LocalDate fecha = LocalDate.now();
        String cotizacion,empresa,agencia,tasacion,perito, contacto;
-       String ubicacion, cliente,costo,tipocosto,descripcion,tipo;
+       String ubicacion, cliente,costo,tipocosto,descripcion,tipo,comprobantes;
         colmnper.setOnEditCommit(t -> {((Clientes) t.getTableView().getItems().get(t.getTablePosition().getRow())).setperito(t.getNewValue());});      
                    
          myIndex = table.getSelectionModel().getSelectedIndex();
@@ -125,11 +133,13 @@ public class BuscarController implements Initializable {
             perito = table.getItems().get(myIndex).getperito().toString();
             tipocosto = table.getItems().get(myIndex).getcosto().toString();
             descripcion = table.getItems().get(myIndex).getdescripcion().toString();
+            comprobantes = nombreboton;
+            System.out.println(comprobantes);
             String[] parts = tipocosto.split(" ");
             tipo = parts[0];
             costo = parts[1];
                  
-            pst = con.prepareStatement("update ainsac.clientes set fecha = ?,nrocotizacion = ?,empresa = ?,nrotasacion = ?,agencia = ?,contacto = ?,ubicacion = ?,cliente = ?,perito = ?,costo = ?,tipo = ?,descripcion = ? where id = ?");
+            pst = con.prepareStatement("update ainsac.clientes set fecha = ?,nrocotizacion = ?,empresa = ?,nrotasacion = ?,agencia = ?,contacto = ?,ubicacion = ?,cliente = ?,perito = ?,costo = ?,tipo = ?,descripcion = ?,comprobantes = ? where id = ?");
             pst.setObject(1, fecha);                                                              
             pst.setString(2, cotizacion);
             pst.setString(3, empresa);
@@ -142,7 +152,8 @@ public class BuscarController implements Initializable {
             pst.setString(10, costo);
             pst.setString(11, tipo);
             pst.setString(12, descripcion);
-             pst.setInt(13, id);
+             pst.setString(13, comprobantes);
+             pst.setInt(14, id);
             pst.executeUpdate();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Máster");
@@ -153,6 +164,7 @@ public class BuscarController implements Initializable {
         }
         catch (SQLException ex)
         {
+            System.out.println(ex);
            // Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
@@ -565,7 +577,7 @@ public class BuscarController implements Initializable {
            Clientes = FXCollections.observableArrayList();
        try
        {   
-           pst = con.prepareStatement("select id,fecha,nrocotizacion,empresa,nrotasacion,agencia,contacto,ubicacion,cliente,perito,costo,tipo,descripcion from clientes");  
+           pst = con.prepareStatement("select id,fecha,nrocotizacion,empresa,nrotasacion,agencia,contacto,ubicacion,cliente,perito,costo,tipo,descripcion,comprobantes from clientes");  
            ResultSet rs = pst.executeQuery();
       {
         while (rs.next())
@@ -584,7 +596,7 @@ public class BuscarController implements Initializable {
             st.setcosto(rs.getString("tipo")+" "+rs.getString("costo"));
             //st.settipo(rs.getString("tipo"));
             st.setdescripcion(rs.getString("descripcion"));
-            
+            st.setcomprobantes(rs.getString("comprobantes"));
             Clientes.add(st);
        }
     }
@@ -601,7 +613,8 @@ public class BuscarController implements Initializable {
                colmnper.setCellValueFactory(f -> f.getValue().peritoProperty());
                colmncost.setCellValueFactory(f -> f.getValue().costoProperty());              
                 //NameColmn.setCellValueFactory(f -> f.getValue().tipoProperty());
-                colmndesc.setCellValueFactory(f -> f.getValue().descripcionProperty());                           
+                colmndesc.setCellValueFactory(f -> f.getValue().descripcionProperty());
+                fact.setCellValueFactory(f -> f.getValue().comprobantesProperty());
        }      
        catch (SQLException ex)
        {
@@ -673,6 +686,20 @@ public class BuscarController implements Initializable {
         colmnper.setCellFactory(TextFieldTableCell.forTableColumn());
         colmntas.setCellFactory(TextFieldTableCell.forTableColumn());
         colmnubic.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        
+        factura = FXCollections.observableArrayList();
+        factura.add("Ver");
+        factura.add("Ajuntar");
+        fact.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), factura));
+        fact.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<Clientes,String>>(){
+            @Override
+            public void handle(TableColumn.CellEditEvent<Clientes,String> event) {
+                System.out.println("value:"+event.getNewValue());  
+               nombreboton = event.getNewValue();
+            }
+            
+        });
     }
     
     
