@@ -8,8 +8,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -62,7 +62,7 @@ public class RegistroController implements Initializable {
 
     @FXML
     public DatePicker txtfecha;
-
+    
     @FXML
     public TextField txtperito;
 
@@ -74,6 +74,10 @@ public class RegistroController implements Initializable {
 
     @FXML
     public TextField txtubicacion;
+      @FXML
+    void setdate(ActionEvent event) {
+
+    }
     @FXML
     void Add(ActionEvent event){
         
@@ -115,6 +119,17 @@ public class RegistroController implements Initializable {
             alert.setHeaderText("Registro Cliente");
             alert.setContentText("Cliente Registrado con éxito!");
             alert.showAndWait();                            
+                   
+            txtcotizacion.setText("");
+            txttasacion.setText("");
+            txtempresa.setText("");
+            txtagencia.setText("");
+            txtcontacto.setText("");
+            txtubicacion.setText("");
+            txtcliente.setText("");
+            txtperito.setText("");
+            txtcosto.setText("");
+            txtdescripcion.setText("");          
         }
         catch (SQLException ex)
         {
@@ -135,6 +150,7 @@ public class RegistroController implements Initializable {
             ex.printStackTrace();
         }
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Connect();
@@ -142,6 +158,19 @@ public class RegistroController implements Initializable {
        txttipo.setItems(tipoList);
        
        //------buscarController.table();
+       txtfecha.setValue(LocalDate.now());
+      try{
+       Connect();
+       pst = con.prepareStatement("SELECT MAX(id)+1 AS id FROM ainsac.clientes;");  
+       ResultSet rs = pst.executeQuery();
+       while (rs.next())
+        {
+        txttasacion.setText(rs.getString("id"));
+        }    
+          
+       }catch(Exception e){
+           System.out.println(e);
+       } 
     }    
     
 }
